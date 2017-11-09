@@ -1,109 +1,103 @@
 window.onload= function () {
 
 var puzzlearea= document.getElementById("puzzlearea");
-var puzzlekids= puzzlearea.children; 
+var puzzlekids= puzzlearea.children;
 var puzzleimage = document.getElementById("puzzlearea");
 
 
-function changeAtrPuzKids (){ 
+function changeAtrPuzKids (){
 
     for (pz=0; pz< puzzlekids.length; pz++) {
       puzzlekids[pz].classList.add("puzzlepiece");
-      } 
+      }
 
   }
 
 
 function positPuzKids(){
-   
 
-       var topVal = 0; 
-       var lfVal=0;  
+       var topVal = 0;
+       var lfVal=0;
 
         //loop through the child elements of the parent
-        //puzzlearea div. 
-        for(po =0; po<puzzlekids.length; po++){ 
+        //puzzlearea div.
+        for(po =0; po<puzzlekids.length; po++){
 
-          puzzlekids[po].style.top= (topVal)+"px"; 
-          puzzlekids[po].style.left=(lfVal)+"px";  
-          lfVal+=100;  
+          puzzlekids[po].style.top= (topVal)+"px";
+          puzzlekids[po].style.left=(lfVal)+"px";
+          lfVal+=100;
 
                 //First row of the puzzle
                if(lfVal==400 && topVal==0)
-               { 
-                lfVal=0;  
-                topVal=100; 
-                }  
-
-               //Second row of the puzzle 
-               if(lfVal==400 && topVal==100) 
-               { 
-                lfVal=0;
-                topVal=200; 
-               } 
-
-               //Third row of the puzzle  
-               if(lfVal==400 && topVal==200) 
                {
-                lfVal=0;   
-                topVal=300; 
+                lfVal=0;
+                topVal=100;
+                }
+
+               //Second row of the puzzle
+               if(lfVal==400 && topVal==100)
+               {
+                lfVal=0;
+                topVal=200;
                }
-        }            
-        } 
 
-
-  
-   function positimage (){
-    
-   var pzi = puzzleimage.style.backgroundImage="url(https://i.pinimg.com/736x/63/aa/28/63aa288bc879bd2428a241b0bbe132f8--christian-paintings-christian-artwork.jpg)"; 
-     puzzleimage.style.backgroundSize= "cover";  
-    // puzzleimage.style.width="400px"; 
-    // puzzleimage.style.height="400px";  
-  
-    var top= 0;
-    var lf= 0;   
-
-  
-    
-    for (var pi=0; pi<puzzlekids.length; pi++) 
-    {     
-      // puzzlekids[pi].style.background = "url(https://i.pinimg.com/736x/63/aa/28/63aa288bc879bd2428a241b0bbe132f8--christian-paintings-christian-artwork.jpg"; 
-      puzzlekids[pi].style.backgroundPosition = (top+"px")+""+(lf+"px"); 
-     
-            //first loop for top elements in puzzle area to assign parts of the image to it
-            if(top == 0 && lf == 400){ 
-
-                top = 100; 
-                lf = 0;  
-            }  
-
-            if(top == 100 && lf ==400){
-
-              top = 200; 
-              lf= 0; 
-            }  
-
-            if(top == 200 && lf == 400){ 
-
-              top = 300; 
-              lf = 0; 
-            }
-    }
-   }    
-
-
-   function movepuzKids (event){ 
-    var kid = puzzlekids.addEventListener("click", function (event){ 
-
+               //Third row of the puzzle
+               if(lfVal==400 && topVal==200)
+               {
+                lfVal=0;
+                topVal=300;
+               }
              
+             puzzlekids[po].style.backgroundPosition= "-"+puzzlekids[po].style.left+" -"+puzzlekids[po].style.top;  
+              
+        
+        }
+        }
 
 
-    });
+
+  
+
+
+   function movepuzKids (){ 
+         
+       var pe; 
+        for(pe=0; pe<puzzlekids.length; pe++){
+             puzzlekids[pe].addEventListener("click", myPositPuz);  
+
+
+               function myPositPuz(){  
+                        
+                        var tarval=event.target.value;  
+                        console.log(tarval);   
+
+                        var clickTop= puzzlekids[pe].style.top; 
+                        var clickLeft=puzzlekids[pe].style.left; 
+
+// document.getElementsByClassName('puzzlepiece')[0].style.top;
+// "0px"
+// document.getElementsByClassName('puzzlepiece')[11].style.top;
+// "200px"
+        
+                        var emptySpotTop= puzzlearea.style.top="400px"; 
+                        var emptySpotLeft=puzzlearea.style.left="400px"; 
+
+                        var swapTop1 = clickTop; 
+                        var swapLeft1= clickLeft; 
+
+                        clickTop=emptySpotTop; 
+                        clickLeft=emptySpotLeft;  
+
+                        emptySpotTop=swapTop1; 
+                        emptySpotLeft=swapLeft1;   
+
+      }
+
+  }
 
    }
 
       changeAtrPuzKids();
       positPuzKids();
-      positimage();
-
+      movepuzKids();
   }
