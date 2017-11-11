@@ -108,7 +108,10 @@ function positPuzKids(){
               }
                         
       
-
+    // function puzzleshuffle(){ 
+      
+      
+    // } 
 
       changeAtrPuzKids();
       positPuzKids();
