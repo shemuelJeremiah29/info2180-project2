@@ -47,8 +47,7 @@ function positPuzKids(){
                 lfVal=0;
                 topVal=300;
                }
-             
-             puzzlekids[po].style.backgroundPosition= "-"+puzzlekids[po].style.left+" -"+puzzlekids[po].style.top;  
+                          puzzlekids[po].style.backgroundPosition= "-"+puzzlekids[po].style.left+" -"+puzzlekids[po].style.top;  
               
         
         }
@@ -61,41 +60,59 @@ function positPuzKids(){
 
    function movepuzKids (){ 
          
-       var pe; 
+     var emptySpotTop= "300px"; 
+     var emptySpotLeft="300px"; 
+
         for(pe=0; pe<puzzlekids.length; pe++){
-             puzzlekids[pe].addEventListener("click", myPositPuz);  
-
-
-               function myPositPuz(){  
+             puzzlekids[pe].addEventListener("click", function (){  
+               
+            
+                        var clickTop= this.style.top;  
+                        var clickLeft= this.style.left; 
                         
-                        var tarval=event.target.value;  
-                        console.log(tarval);   
+                        if(ifmoveable(this.style.top,this.style.left,emptySpotTop, emptySpotLeft)==true){       
+                       
+                                    var swapTop1 = clickTop; 
+                                    var swapLeft1= clickLeft; 
+                                    
+                                    this.style.top=emptySpotTop; 
+                                    this.style.left=emptySpotLeft;   
+                                  
+                                    emptySpotTop=swapTop1; 
+                                    emptySpotLeft=swapLeft1;  
+                        
+                        }else{ 
 
-                        var clickTop= puzzlekids[pe].style.top; 
-                        var clickLeft=puzzlekids[pe].style.left; 
+                            this.style.borderColor= "red"; 
 
-// document.getElementsByClassName('puzzlepiece')[0].style.top;
-// "0px"
-// document.getElementsByClassName('puzzlepiece')[11].style.top;
-// "200px"
-        
-                        var emptySpotTop= puzzlearea.style.top="400px"; 
-                        var emptySpotLeft=puzzlearea.style.left="400px"; 
+                        }
 
-                        var swapTop1 = clickTop; 
-                        var swapLeft1= clickLeft; 
-
-                        clickTop=emptySpotTop; 
-                        clickLeft=emptySpotLeft;  
-
-                        emptySpotTop=swapTop1; 
-                        emptySpotLeft=swapLeft1;   
-
-      }
+       });                  
 
   }
 
-   }
+   } 
+
+    function ifmoveable(coordTop, coordLeft, emptySpotTop, emptySpotLeft){  
+                  var top= parseInt(coordTop); 
+                  var left=parseInt(coordLeft); 
+                  var empTop=parseInt(emptySpotTop); 
+                  var empLf=parseInt(emptySpotLeft);   
+
+                  console.log("Empty Top",empTop,"Top coordinate",coordTop);
+                  // if(){ 
+
+                  // }
+                  // if(coordTop.value> empTop.value && ){
+
+
+                  // } 
+
+                  return false; 
+                }
+                        
+      
+
 
       changeAtrPuzKids();
       positPuzKids();
