@@ -94,22 +94,18 @@ function positPuzKids(){
    } 
 
     function ifmoveable(coordTop, coordLeft, emptySpotTop, emptySpotLeft){  
-                  var top= parseInt(coordTop); 
+                  var top=parseInt(coordTop);  
                   var left=parseInt(coordLeft); 
                   var empTop=parseInt(emptySpotTop); 
                   var empLf=parseInt(emptySpotLeft);   
 
-                  console.log("Empty Top",empTop,"Top coordinate",coordTop);
-                  // if(){ 
-
-                  // }
-                  // if(coordTop.value> empTop.value && ){
-
-
-                  // } 
-
-                  return false; 
-                }
+                  console.log("Empty Top",empTop,"Top coordinate",top);
+                  if(((empTop-top)<=100) && ((empLf-left)<=100) || ((left-empLf)>=100)){
+                      return true; 
+                }else{ 
+                      return false; 
+                } 
+              }
                         
       
 
