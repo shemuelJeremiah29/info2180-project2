@@ -101,15 +101,12 @@ function positPuzKids(){
 
 
 
-    function ifmoveable(coordTop, coordLeft, coordright, coordbottom, emptySpotTop, emptySpotLeft, emptySpotRight,emptySpotBott){  
+    function ifmoveable(coordTop, coordLeft, emptySpotTop, emptySpotLeft){  
                   var top=parseInt(coordTop);  
                   var left=parseInt(coordLeft); 
                   var empTop=parseInt(emptySpotTop); 
                   var empLf=parseInt(emptySpotLeft);  
-                  var right=parseInt(coordright); 
-                  var bottom= parseInt(coordbottom);   
-                  var empbott=parseInt(emptySpotBott); 
-                  var empright=parseInt(emptySpotRight);
+                 
 
                   console.log("Empty Top",empTop,"Top coordinate",top);
 
