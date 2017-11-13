@@ -81,10 +81,6 @@ function positPuzKids(){
                                     emptySpotTop=swapTop1; 
                                     emptySpotLeft=swapLeft1;  
                         
-                        }else{ 
-
-                            this.style.borderColor= "red"; 
-
                         }
 
        });                  
@@ -100,7 +96,7 @@ function positPuzKids(){
                   var empLf=parseInt(emptySpotLeft);   
 
                   console.log("Empty Top",empTop,"Top coordinate",top);
-                  if(((empTop-top)<=100) && ((empLf-left)<=100) || ((left-empLf)>=100)){
+                  if((top-100)==empTop&& left == empLf || (top+100)==empTop && left == empLf || top == empTop && left+100 == empLf || top == empTop && left-100 == empLf ){
                       return true; 
                 }else{ 
                       return false; 
