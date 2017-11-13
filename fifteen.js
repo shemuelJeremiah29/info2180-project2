@@ -2,7 +2,7 @@ window.onload= function () {
 
 var puzzlearea= document.getElementById("puzzlearea");
 var puzzlekids= puzzlearea.children;
-var puzzleimage = document.getElementById("puzzlearea");
+
 
 
 function changeAtrPuzKids (){
@@ -55,24 +55,32 @@ function positPuzKids(){
 
 
 
-  
-
-
    function movepuzKids (){ 
          
      var emptySpotTop= "300px"; 
-     var emptySpotLeft="300px"; 
+     var emptySpotLeft="300px";  
 
-        for(pe=0; pe<puzzlekids.length; pe++){
-             puzzlekids[pe].addEventListener("click", function (){  
+     for(pm=0; pm<puzzlekids.length; pm++){
+              puzzlekids[pm].addEventListener("mouseover", function(){ 
+                if(ifmoveable (this.style.top,this.style.left,emptySpotTop, emptySpotLeft)){
+                  this.classList.add("movablepiece"); 
+                }
+              });
+
+              puzzlekids[pm].addEventListener("mouseleave",function(){
+                this.className = 'puzzlepiece';
+              }); 
                
-            
+                    puzzlekids[pm].addEventListener("click", function (){  
+                      
+                          
                         var clickTop= this.style.top;  
                         var clickLeft= this.style.left; 
                         
-                        if(ifmoveable(this.style.top,this.style.left,emptySpotTop, emptySpotLeft)==true){       
-                       
-                                    var swapTop1 = clickTop; 
+                        
+                                if(ifmoveable (this.style.top,this.style.left,emptySpotTop, emptySpotLeft)){
+                                   
+                                      var swapTop1 = clickTop; 
                                     var swapLeft1= clickLeft; 
                                     
                                     this.style.top=emptySpotTop; 
@@ -80,14 +88,17 @@ function positPuzKids(){
                                   
                                     emptySpotTop=swapTop1; 
                                     emptySpotLeft=swapLeft1;  
-                        
-                        }
+                                    
+                                }
+                              });          
+                                    
+      
 
-       });                  
+  } 
 
-  }
+   }  
 
-   } 
+
 
     function ifmoveable(coordTop, coordLeft, emptySpotTop, emptySpotLeft){  
                   var top=parseInt(coordTop);  
@@ -97,13 +108,17 @@ function positPuzKids(){
 
                   console.log("Empty Top",empTop,"Top coordinate",top);
                   if((top-100)==empTop&& left == empLf || (top+100)==empTop && left == empLf || top == empTop && left+100 == empLf || top == empTop && left-100 == empLf ){
-                      return true; 
+                      return true;  
+
                 }else{ 
                       return false; 
                 } 
               }
                         
-      
+      // function shufflepuzzle(){ 
+
+
+      // }
 
 
       changeAtrPuzKids();
