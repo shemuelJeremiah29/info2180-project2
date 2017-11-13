@@ -58,12 +58,10 @@ function positPuzKids(){
    function movepuzKids (){ 
          
      var emptySpotTop= "300px"; 
-<<<<<<< HEAD
      var emptySpotLeft="300px"; 
      var emptySpotRight="300px"; 
      var emptySpotBott="300px";  
-=======
-     var emptySpotLeft="300px";  
+
 
      for(pm=0; pm<puzzlekids.length; pm++){
               puzzlekids[pm].addEventListener("mouseover", function(){ 
@@ -71,12 +69,6 @@ function positPuzKids(){
                   this.classList.add("movablepiece"); 
                 }
               });
->>>>>>> master
-
-              puzzlekids[pm].addEventListener("mouseleave",function(){
-                this.className = 'puzzlepiece';
-              }); 
-               
                     puzzlekids[pm].addEventListener("click", function (){  
                       
                           
@@ -84,16 +76,12 @@ function positPuzKids(){
                         var clickLeft= this.style.left;  
 
                         
-<<<<<<< HEAD
-                        if(ifmoveable(this.style.top,this.style.left, this.style.right, this.style.bottom, emptySpotTop, emptySpotLeft, emptySpotRight,emptySpotBott)==true){       
-                       
-                                    var swapTop1 = clickTop; 
-=======
+
                         
                                 if(ifmoveable (this.style.top,this.style.left,emptySpotTop, emptySpotLeft)){
                                    
                                       var swapTop1 = clickTop; 
->>>>>>> master
+
                                     var swapLeft1= clickLeft; 
                                     
                                     this.style.top=emptySpotTop; 
@@ -124,31 +112,19 @@ function positPuzKids(){
                   var empright=parseInt(emptySpotRight);
 
                   console.log("Empty Top",empTop,"Top coordinate",top);
-<<<<<<< HEAD
-                  if(((empTop-top)<=100) && ((empLf-left)<=100) || ((left-empLf)>=100)&&((empbott-bottom)<=100) && ((bottom-empbott)>=100) && ((empright-right)<=100 && (right-empright)>=100)){
-                      return true; 
-=======
+
+                  
                   if((top-100)==empTop&& left == empLf || (top+100)==empTop && left == empLf || top == empTop && left+100 == empLf || top == empTop && left-100 == empLf ){
                       return true;  
 
->>>>>>> master
-                }else{ 
+  }else{ 
                       return false; 
                 } 
               }
                         
-<<<<<<< HEAD
-      
-    // function puzzleshuffle(){ 
+function shuffle( ){ 
 
-=======
-      // function shufflepuzzle(){ 
-
-
-      // }
->>>>>>> master
-
-    // } 
+}
 
       changeAtrPuzKids();
       positPuzKids();
